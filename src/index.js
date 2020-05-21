@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'mobx-react';
-import { TaskStore } from './models/store';
+import {Provider} from 'mobx-react';
+import {TaskStore} from './models/store';
+import {initializeIcons} from '@uifabric/icons';
 
+initializeIcons();
 const store = TaskStore.create();
 
 ReactDOM.render(

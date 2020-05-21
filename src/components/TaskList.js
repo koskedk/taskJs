@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import TaskView from './TaskView';
+import { ActionButton } from 'office-ui-fabric-react';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 const TaskList = ({ store }) => {
     const [todo, setTodo] = useState('');
@@ -16,13 +18,12 @@ const TaskList = ({ store }) => {
 
     return (
         <div>
-            {store.isLoading && <h5>loading...</h5>}
             <h4>{store.showStatus}</h4>
             <ul>
                 {tasks.map(task => (<TaskView key={task.id} task={task}/>))}
             </ul>
-            <label>Task <input type="text" value={todo} onChange={onTextChange}/></label>
-            <button onClick={onAdd} disabled={!todo}>Add</button>
+            <TextField label="Task " value={todo} onChange={onTextChange} required />
+           <ActionButton iconProps={{ iconName: 'Add' }} onClick={onAdd} disabled={!todo}>Add Task</ActionButton>
         </div>
     );
 };
